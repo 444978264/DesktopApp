@@ -1,14 +1,11 @@
 {
-  "dependencies": {
-    "electron": "^11.3.0"
-  },
   "name": "DesktopApp",
   "description": "",
   "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -20,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/444978264/DesktopApp/issues"
   },
-  "homepage": "https://github.com/444978264/DesktopApp#readme"
+  "homepage": "https://github.com/444978264/DesktopApp#readme",
+  "devDependencies": {
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "electron": "^11.3.0"
+  }
 }

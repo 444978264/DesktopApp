@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnusedLabels": false,
+    "resolveJsonModule": true,
+    "target": "es5",
+    "lib": ["dom", "ES2019.Symbol", "ES2020.Symbol.WellKnown", "es2017.object"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

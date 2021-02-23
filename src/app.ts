@@ -1,9 +1,14 @@
-import pkg from '../package.json'
+import { app, BrowserWindow } from 'electron'
+import { join } from 'path'
+app.on('ready', () => {
+  const win = new BrowserWindow({
+    width: 1000,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  })
 
-export const test: string = ''
-
-export function test2(age: number) {
-  if (age > 19) {
-    return pkg.version
-  }
-}
+  console.log('render index html:', join(__dirname, 'render', 'index.html'))
+  win.loadFile(join(__dirname, 'render', 'index.html'))
+})

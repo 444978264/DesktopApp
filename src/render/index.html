@@ -9,4 +9,11 @@
   <body>
     hello world
   </body>
+  <script>
+    const { ipcRenderer } = require('electron')
+    ipcRenderer.on('world', (e, message) => {
+      console.log(message, 'message')
+    })
+    ipcRenderer.send('hello', 'cyf')
+  </script>
 </html>

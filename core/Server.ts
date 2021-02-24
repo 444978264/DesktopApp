@@ -8,3 +8,7 @@ export class Server {
     Server.channels.set(channelName, channel)
   }
 }
+
+export class ServerChannels extends Server {
+  
+}

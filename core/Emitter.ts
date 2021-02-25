@@ -37,11 +37,13 @@ export class Emitter<T> implements Disposable {
         }
         const result = {
           dispose: () => {
-            remove()
-            const isLast = this._listeners.size === 0
-            result.dispose = Emitter.noop
-            if (isLast && this._onDidLastRemove) {
-              this._onDidLastRemove()
+            if (!this.disposed) {
+              remove()
+              const isLast = this._listeners.size === 0
+              result.dispose = Emitter.noop
+              if (isLast && this._onDidLastRemove) {
+                this._onDidLastRemove()
+              }
             }
           },
         }

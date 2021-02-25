@@ -7,8 +7,9 @@ export type EmitterEvent<T> = (
   ctx?: any,
   disposables?: any
 ) => Disposable
-export class Emitter<T> {
+export class Emitter<T> implements Disposable {
   private static noop = function () {}
+  private disposed = false
   private _onDidFirstListen: Function
   private _onDidLastRemove: Function
   private _listeners: Set<Listener<T>>
@@ -32,6 +33,7 @@ export class Emitter<T> {
         this._listeners.add(listenerCache)
         const remove = () => {
           this._listeners.delete(listenerCache)
+          console.log('remove', this._listeners)
         }
         const result = {
           dispose: () => {
@@ -78,5 +80,10 @@ export class Emitter<T> {
   }
   onDidLastRemove(callback = Emitter.noop) {
     this._onDidLastRemove = callback
+  }
+  dispose() {
+    this.disposed = true
+    this._listeners && this._listeners.clear()
+    this._deliveryQueue && this._deliveryQueue.clear()
   }
 }

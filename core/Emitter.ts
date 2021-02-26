@@ -1,13 +1,11 @@
+import { IDisposable } from './disposables'
 type Listener<T> = [(e: T) => void, any] | ((e: T) => void)
-export type Disposable = {
-  dispose(): void
-}
 export type EmitterEvent<T> = (
   Listener: (e: T) => any,
   ctx?: any,
-  disposables?: any
-) => Disposable
-export class Emitter<T> implements Disposable {
+  IDisposables?: any
+) => IDisposable
+export class Emitter<T> implements IDisposable {
   private static noop = function () {}
   private disposed = false
   private _onDidFirstListen: Function
@@ -20,7 +18,7 @@ export class Emitter<T> implements Disposable {
       this._event = (
         listener: (e: T) => any,
         ctx: any
-        // disposables: () => void
+        // IDisposables: () => void
       ) => {
         if (!this._listeners) {
           this._listeners = new Set()

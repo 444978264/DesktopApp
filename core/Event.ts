@@ -1,4 +1,5 @@
-import { Disposable, Emitter, EmitterEvent } from './Emitter'
+import { IDisposable } from './disposables'
+import { Emitter, EmitterEvent } from './Emitter'
 
 interface NodeEmitter {
   on(event: string | symbol, listener: Function): unknown
@@ -42,7 +43,7 @@ export class Event {
   }
   // 快照
   static snapshot<T>(event: EmitterEvent<T>) {
-    let listener: Disposable
+    let listener: IDisposable
     const emitter = new Emitter<T>()
     emitter.onDidFirstListen(function () {
       listener = event(emitter.fire, emitter)
